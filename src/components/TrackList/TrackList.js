@@ -3,20 +3,19 @@ import Tracks from '../Tracks/Tracks';
 
 class TrackList extends React.Component {
     render() {
+        
         return (
             <div className="TrackList">
-                <Tracks onAdd={this.props.onAdd} isRemoval={this.props.isRemoval} />
-                <ul>
-                {this.props.tracks.map(track => {
-                    return(
-                        <li key={track.id}>{track.name} <p>{track.album} | {track.artist}</p></li>
-                        
-                    )
-                })}
-                </ul>
+               {this.props.tracks.map(track => <Tracks onAdd={this.props.onAdd} track={track} key={track.id}/>)}
             </div>
         )
     }
 }
 
 export default TrackList;
+
+/*
+<div class="TrackList">
+    <!-- You will add a map method that renders a set of Track components  -->
+</div>
+*/

@@ -42,13 +42,13 @@ class App extends React.Component {
     }
 
     addTrack(track) {
-      this.state.playlistTracks.map(trackState => {
-        if(trackState.id === track.id) {
-          return;
-        }
-      })
-
-      this.setState({playlistTracks: [...track]});
+      if(this.state.playlistTracks.find(trackState => trackState.id === track.id)){
+        return;
+      } 
+        
+      const arrayToUpdateState = this.state.playlistTracks;
+      arrayToUpdateState.push(track);
+      this.setState({playlistTracks: arrayToUpdateState});
     }
 
     render() {
@@ -59,7 +59,7 @@ class App extends React.Component {
                 <SearchBar />
               <div className="App-playlist">
                 <SearchResults onAdd={this.addTrack} searchResults={this.state.searchResults}/>
-                <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks}/>
+                <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
               </div>
             </div>
           </div>
@@ -68,3 +68,16 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+<div>
+  <h1>Ja<span class="highlight">mmm</span>ing</h1>
+  <div class="App">
+    <!-- Add a SearchBar component -->
+    <div class="App-playlist">
+      <!-- Add a SearchResults component -->
+      <!-- Add a Playlist component -->
+    </div>
+  </div>
+</div>
+*/

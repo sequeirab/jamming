@@ -15,3 +15,10 @@ class SearchResults extends react.Component {
 }
 
 export default SearchResults;
+
+/*
+<div className="SearchResults">
+  <h2>Results</h2>
+  <!-- Add a TrackList component -->
+</div>
+*/
